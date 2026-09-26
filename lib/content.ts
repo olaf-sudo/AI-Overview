@@ -161,48 +161,40 @@ export const REPORT = {
 export const PRICING = {
   h2: "How fast do you want to be mentioned?",
   sub: "Every plan does the same work. The difference is pace. An agency charges €1,500 a month or more for this.",
-  toggleLabel: "Choose your pace",
-  speeds: ["Take it easy", "Within a quarter", "As fast as possible"],
-  terms: {
-    fine: "Cancel any month · Setup €149, waived when paying yearly · Excl. VAT · ",
-    link: "An agency? From €79 per client",
-  },
-  badgeFit: "Fits you",
-  badgePopular: "Most chosen",
-  visibleIn: "Visible within",
   planCta: (name: string) => `Start with ${name}`,
+  per: "/month",
   plans: [
     {
       name: "Start",
-      who: "For those who want to start calmly.",
-      num: "6",
-      unit: "months, roughly",
+      badge: "Steady pace",
       price: "€29",
-      per: "a month",
+      visible: "Visible in about 6 months",
+      who: "For those who want to start calmly.",
+      featuresTitle: "What you get:",
       checks: ["Knowledge base on your own domain", "4 new pages a month", "Monthly report"],
     },
     {
       name: "Growth",
-      who: "For those who want to be mentioned within a quarter.",
-      num: "3",
-      unit: "months, roughly",
+      badge: "Most chosen",
       price: "€99",
-      per: "a month",
+      visible: "Visible in about 3 months",
+      who: "For those who want to be mentioned within a quarter.",
+      featuresTitle: "Everything in Start, and:",
       checks: [
         "12 pages a month",
         "Measurement in ChatGPT, Gemini and Claude",
         "Weekly report with competitors",
       ],
-      popular: true,
+      highlight: true,
     },
     {
       name: "Sprint",
-      who: "For those who want it sorted fast.",
-      num: "6 to 8",
-      unit: "weeks",
+      badge: "Fastest",
       price: "€249",
-      per: "a month",
-      checks: ["Everything in Growth", "30 pages a month", "Mentions on third-party sites"],
+      visible: "Visible in 6 to 8 weeks",
+      who: "For those who want it sorted fast.",
+      featuresTitle: "Everything in Growth, and:",
+      checks: ["30 pages a month", "Mentions on third-party sites"],
     },
   ],
   expert: {
@@ -221,7 +213,7 @@ export const PRICING = {
  * 9. FAQ
  * ---------------------------------------------------------------- */
 export const FAQ = {
-  h2: "Frequently asked questions",
+  h2: "FAQ",
   footer: { text: "Question not listed? ", link: "Email us." },
   items: [
     {
