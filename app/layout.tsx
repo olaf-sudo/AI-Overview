@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Geist_Mono } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
@@ -8,13 +8,6 @@ const figtree = Figtree({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-figtree",
-});
-
-/** Mono-labels in kapitalen. */
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist-mono",
 });
 
 // TODO: definitieve title en meta description laten vaststellen
@@ -40,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${geistMono.variable} antialiased`}
+      className={`${figtree.variable} antialiased`}
     >
       <body>
         <SmoothScroll />

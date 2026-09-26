@@ -27,16 +27,16 @@ export default function HowItWorks() {
           {HOW.h2}
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal>
           <p className="lead max-w-[48ch]">{HOW.body}</p>
         </Reveal>
 
-        <Reveal delay={200} className="flex items-center gap-[10px]">
+        <Reveal className="flex items-center gap-[10px]">
           <AiLogoStack circle={38} logo={17} overlap={-8} labelled />
           <span className="ml-[10px] text-[14px] text-muted">{HOW.logosLabel}</span>
         </Reveal>
 
-        <Reveal delay={280} className="flex">
+        <Reveal className="flex">
           <a href="#check" className="btn btn-blue mt-1 px-5 py-[13px] text-[15px]">
             {HOW.cta}
           </a>
@@ -48,8 +48,6 @@ export default function HowItWorks() {
         {HOW.steps.map((step, i) => (
           <Reveal
             key={step.n}
-            delay={i * 80}
-            amount={0.08}
             className={`stack-card sticky ${STICKY_TOP[i]} flex flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-step`}
           >
             {i === 0 ? <IntakeVisual /> : i === 1 ? <PagesVisual /> : <WeekVisual />}

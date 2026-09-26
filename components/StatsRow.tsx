@@ -10,15 +10,14 @@ export default function StatsRow() {
           <Reveal as="h2" id="stats-title" className="h2 text-[clamp(30px,3.2vw,42px)]">
             {STATS.title}
           </Reveal>
-          <Reveal delay={120}>
+          <Reveal>
             <div className="text-[15px] text-muted">{STATS.sub}</div>
           </Reveal>
         </div>
 
-        {STATS.items.map((s, i) => (
+        {STATS.items.map((s) => (
           <Reveal
             key={s.n}
-            delay={160 + i * 110}
             className="flex flex-col justify-center gap-[6px] px-7 py-11"
           >
             <CountUp value={s.n} className="num block text-[clamp(36px,3.6vw,52px)] leading-none text-blue" />

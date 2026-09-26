@@ -223,45 +223,30 @@ export const PRICING = {
 export const FAQ = {
   h2: "Frequently asked questions",
   footer: { text: "Question not listed? ", link: "Email us." },
-  groups: [
+  items: [
     {
-      title: "Results",
-      items: [
-        {
-          q: "How long does it take?",
-          a: "We usually see first mentions after 4 to 8 weeks. Solidly visible after about 3 months with Growth, 6 months with Start.",
-        },
-        {
-          q: "Does this work for ChatGPT too?",
-          a: "Yes. ChatGPT leans more on third-party sites, which is why reviews and mentions are part of Growth and Sprint.",
-        },
-      ],
+      q: "How long does it take?",
+      a: "We usually see first mentions after 4 to 8 weeks. Solidly visible after about 3 months with Growth, 6 months with Start.",
     },
     {
-      title: "How it works",
-      items: [
-        {
-          q: "What is GEO?",
-          a: "Generative Engine Optimization: making sure AI mentions you. Like SEO, but for ChatGPT, Gemini and Claude.",
-        },
-        {
-          q: "Do I have to do anything myself?",
-          a: "One intake of fifteen minutes. After that you approve pages with one click. Your current website does not change.",
-        },
-        {
-          q: "Is this the same as SEO?",
-          a: "It looks like it, but AI chooses differently from Google. It helps you in Google, it does not replace it.",
-        },
-      ],
+      q: "Does this work for ChatGPT too?",
+      a: "Yes. ChatGPT leans more on third-party sites, which is why reviews and mentions are part of Growth and Sprint.",
     },
     {
-      title: "Costs and cancelling",
-      items: [
-        {
-          q: "What if I stop?",
-          a: "Then the work and the measurement stop. Whatever is there stays yours.",
-        },
-      ],
+      q: "What is GEO?",
+      a: "Generative Engine Optimization: making sure AI mentions you. Like SEO, but for ChatGPT, Gemini and Claude.",
+    },
+    {
+      q: "Do I have to do anything myself?",
+      a: "One intake of fifteen minutes. After that you approve pages with one click. Your current website does not change.",
+    },
+    {
+      q: "Is this the same as SEO?",
+      a: "It looks like it, but AI chooses differently from Google. It helps you in Google, it does not replace it.",
+    },
+    {
+      q: "What if I stop?",
+      a: "Then the work and the measurement stop. Whatever is there stays yours.",
     },
   ],
 };

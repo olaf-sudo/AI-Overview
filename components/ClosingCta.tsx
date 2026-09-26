@@ -6,7 +6,7 @@ import { Tick } from "./ui";
 
 export default function ClosingCta() {
   return (
-    <section aria-labelledby="closing-title" className="container-page pb-6">
+    <section aria-labelledby="closing-title" className="cv-auto container-page pb-6">
       <div className="relative isolate flex flex-col items-center gap-5 overflow-hidden rounded-[32px] bg-blue px-6 py-[clamp(40px,6vw,80px)] text-center text-white">
         {/* Stippenvelden die van buiten naar binnen ademen */}
         <PixelField side="left" />
@@ -16,11 +16,11 @@ export default function ClosingCta() {
           {CLOSING.h2}
         </Reveal>
 
-        <Reveal delay={140}>
+        <Reveal>
           <p className="m-0 max-w-[56ch] text-[18px] text-pretty text-white/86">{CLOSING.body}</p>
         </Reveal>
 
-        <Reveal delay={220} className="relative mt-2 flex w-full justify-center">
+        <Reveal className="relative mt-2 flex w-full justify-center">
           {/* Zachte gloed achter de invoerpil */}
           <span
             aria-hidden="true"
@@ -46,7 +46,6 @@ export default function ClosingCta() {
         </Reveal>
 
         <Reveal
-          delay={300}
           className="flex flex-wrap justify-center gap-x-[22px] gap-y-2 text-[14px] text-white/86"
         >
           {TRUST.map((t) => (

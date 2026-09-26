@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HERO } from "@/lib/content";
+import { HERO, HOW } from "@/lib/content";
 
 /** Hoogte van de header; het hero-logo moet hier onder schuiven. */
 const HEADER_HEIGHT = 64;
@@ -77,17 +77,21 @@ export default function SiteHeader() {
   return (
     <header
       inert={!shown}
-      className={`fixed inset-x-0 top-0 z-50 h-16 border-b border-line/70 bg-white/80 backdrop-blur-md transition-[transform,opacity] duration-300 ease-out ${
+      className={`fixed inset-x-0 top-0 z-50 h-16 border-b border-line/70 bg-white/92 backdrop-blur-md transition-[transform,opacity] duration-300 ease-out ${
         shown ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       }`}
     >
-      <div className="container-page flex h-16 items-center">
+      <div className="container-page flex h-16 items-center justify-between gap-4">
         <a
           href="#check"
           className="flex items-center gap-[10px] text-[20px] font-bold leading-6 tracking-[-0.02em] text-ink hover:no-underline"
         >
           <LogoMark draw={shown} />
           {HERO.brand}
+        </a>
+        {/* Eén knop rechts, terug naar het invoerveld in de hero */}
+        <a href="#check" className="btn btn-blue px-4 py-[9px] text-[14px]">
+          {HOW.cta}
         </a>
       </div>
     </header>

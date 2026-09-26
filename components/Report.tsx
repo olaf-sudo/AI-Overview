@@ -4,20 +4,18 @@ import { AiLogo, Cross, Tick } from "./ui";
 
 export default function Report() {
   return (
-    <section aria-labelledby="report-title" className="border-y border-line bg-white">
+    <section aria-labelledby="report-title" className="cv-auto border-y border-line bg-white">
       <div className="container-page section-y flex flex-col items-center gap-10">
         <div className="flex max-w-[820px] flex-col items-center gap-5 text-center">
           <Reveal as="h2" id="report-title" className="h2">
             {REPORT.h2}
           </Reveal>
-          <Reveal delay={140}>
+          <Reveal>
             <p className="lead max-w-[62ch]">{REPORT.sub}</p>
           </Reveal>
         </div>
 
         <Reveal
-          delay={100}
-          amount={0.1}
           className="ui-font w-full max-w-[960px] overflow-hidden rounded-[20px] border border-line bg-beige"
         >
           {/* Topbalk van het venster */}
@@ -85,7 +83,7 @@ export default function Report() {
           </div>
         </Reveal>
 
-        <Reveal delay={120} className="flex">
+        <Reveal className="flex">
           <a href="#check" className="btn btn-blue px-[22px] py-[14px] text-[16px]">
             {REPORT.cta}
           </a>
