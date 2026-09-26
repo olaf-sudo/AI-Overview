@@ -156,40 +156,6 @@ export const REPORT = {
 };
 
 /* ---------------------------------------------------------------- *
- * 7. Vergelijking
- * ---------------------------------------------------------------- */
-export const COMPARE = {
-  h2: "You used to hire someone for this.",
-  sub: "A GEO agency starts at €1,500 a month. Advertising in ChatGPT at 200,000 dollars. We do the same work from €29.",
-  cols: ["AI Overview", "A GEO agency", "Figure it out yourself"],
-  /** Alleen voor schermlezers: de kop boven de eerste kolom. */
-  rowHeader: "Aspect",
-  rows: [
-    {
-      k: "Price per month",
-      a: "from €29",
-      b: "often €1,500 to €4,000",
-      c: "your own evenings",
-    },
-    { k: "Getting started", a: "today", b: "after a quote and intake", c: "whenever you find time" },
-    {
-      k: "See where you stand every week",
-      a: "yes",
-      b: "usually monthly",
-      c: "no",
-      check: true,
-    },
-    {
-      k: "Cancel any month",
-      a: "yes",
-      b: "often a yearly contract",
-      c: "not applicable",
-      check: true,
-    },
-  ] satisfies { k: string; a: string; b: string; c: string; check?: boolean }[],
-};
-
-/* ---------------------------------------------------------------- *
  * 8. Prijzen
  * ---------------------------------------------------------------- */
 export const PRICING = {

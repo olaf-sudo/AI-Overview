@@ -1,5 +1,4 @@
 import ClosingCta from "@/components/ClosingCta";
-import Comparison from "@/components/Comparison";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import GoogleSection from "@/components/GoogleSection";
@@ -27,7 +26,6 @@ export default function Home() {
           <GoogleSection />
           <HowItWorks />
           <Report />
-          <Comparison />
           <Pricing />
           <Faq />
           <ClosingCta />
