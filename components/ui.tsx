@@ -101,3 +101,48 @@ export function AiLogoStack({
     </span>
   );
 }
+
+/** Het merkvinkje uit de handoff: 7×7 ronde stippen, 1 = stip aan. */
+const CHECK = ["0000011", "0000011", "0000110", "1100110", "1101100", "0111100", "0011000"];
+
+/**
+ * Het stippenvinkje. Met `draw` ploppen de stippen van links naar rechts in
+ * (`.px-draw` in globals.css), alsof het vinkje wordt gezet.
+ */
+export function DotCheck({
+  dot = 3,
+  gap = 1,
+  color = "#1A1AFF",
+  draw = false,
+}: {
+  dot?: number;
+  gap?: number;
+  color?: string;
+  draw?: boolean;
+}) {
+  const size = CHECK.length * (dot + gap) - gap;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      aria-hidden="true"
+      className={`block flex-none ${draw ? "px-draw" : ""}`}
+    >
+      {CHECK.flatMap((row, r) =>
+        row.split("").map((bit, c) =>
+          bit === "1" ? (
+            <circle
+              key={`${r}-${c}`}
+              cx={c * (dot + gap) + dot / 2}
+              cy={r * (dot + gap) + dot / 2}
+              r={dot / 2}
+              fill={color}
+              style={{ "--px-i": c } as CSSProperties}
+            />
+          ) : null,
+        ),
+      )}
+    </svg>
+  );
+}

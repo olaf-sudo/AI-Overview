@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PRICING } from "@/lib/content";
 import Reveal from "./Reveal";
-import { Tick } from "./ui";
+import { DotCheck, Tick } from "./ui";
 
 
 export default function Pricing() {
@@ -20,61 +20,63 @@ export default function Pricing() {
         </Reveal>
       </div>
 
-      {/* Drie plannen. Groei is het plan waar we naartoe sturen: blauw, opgetild,
-          met gloed; Start en Sprint staan er rustiger naast. */}
+      {/* Drie plannen. De prijs is het grootste element; de doorlooptijd staat als
+          klein label eronder. Groei is waar we naartoe sturen: blauwe balk
+          bovenop met het merkvinkje, blauwe naam en knop, opgetild met gloed. */}
       <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] items-stretch gap-5 pt-3">
         {PRICING.plans.map((p) => {
           const hl = Boolean(p.popular);
           return (
             <Reveal key={p.name} className="flex">
               <div
-                className={`relative flex w-full flex-col gap-5 rounded-[20px] bg-white p-7 ${
+                className={`relative flex w-full flex-col overflow-hidden rounded-[20px] bg-white ${
                   hl
                     ? "z-[1] border-2 border-blue shadow-[0_28px_60px_-24px_rgba(26,26,255,0.35)] md:-translate-y-3"
-                    : "border border-line"
+                    : "border border-line md:mt-[38px]"
                 }`}
               >
                 {hl ? (
-                  <span className="label absolute -top-[14px] left-6 rounded-lg bg-blue px-[10px] py-[5px] text-white!">
+                  <div className="flex items-center justify-center gap-2 bg-blue py-[9px] text-[13px] font-semibold text-white">
+                    <DotCheck dot={2} gap={0.6} color="#C6F24E" />
                     {PRICING.badgePopular}
-                  </span>
+                  </div>
                 ) : null}
 
-                <div className="flex flex-col gap-[6px]">
-                  <h3 className="m-0 text-[20px] font-bold tracking-[-0.02em]">{p.name}</h3>
-                  <div className="text-[15px] text-muted">{p.who}</div>
-                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className={`m-0 text-[20px] font-bold tracking-[-0.02em] ${hl ? "text-blue" : ""}`}>{p.name}</h3>
+                  <div className="mt-[6px] text-[15px] text-muted md:min-h-[45px]">{p.who}</div>
 
-                <div className="flex flex-col gap-1">
-                  <div className="label">{PRICING.visibleIn}</div>
-                  <div className="flex flex-wrap items-baseline gap-2">
-                    <span className={`num text-[clamp(40px,4vw,56px)] leading-none ${hl ? "text-blue" : "text-ink"}`}>
-                      {p.num}
-                    </span>
-                    <span className="text-[18px] font-semibold">{p.unit}</span>
+                  <div className="mt-6 flex items-baseline gap-1">
+                    <span className="num text-[52px] font-semibold leading-none tracking-[-0.035em]">{p.price}</span>
+                    <span className="text-[16px] font-medium text-muted">{PRICING.per}</span>
                   </div>
+
+                  <div
+                    className={`mt-4 inline-flex items-center gap-2 self-start rounded-full py-[6px] pl-[10px] pr-3 text-[13px] font-semibold ${
+                      hl ? "bg-lime text-ink" : "bg-paper text-muted"
+                    }`}
+                  >
+                    <DotCheck dot={1.6} gap={0.5} color={hl ? "#0B0B3B" : "#525873"} />
+                    {p.visible}
+                  </div>
+
+                  <a
+                    href="#check"
+                    className={`btn mt-6 w-full px-4 py-[14px] text-[15px] ${hl ? "btn-blue" : "btn-white border border-line"}`}
+                  >
+                    {PRICING.planCta(p.name)}
+                  </a>
+
+                  <div className="mt-7 border-t border-line pt-5 text-[14px] font-semibold">{p.featuresTitle}</div>
+                  <ul className="m-0 mt-3 flex list-none flex-col gap-[10px] p-0 text-[15px]">
+                    {p.checks.map((c) => (
+                      <li key={c} className="flex items-center gap-[10px]">
+                        <Tick size={18} />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="flex items-baseline gap-2">
-                  <span className="text-[36px] font-bold leading-none tracking-[-0.02em]">{p.price}</span>
-                  <span className="text-[14px] text-muted">{p.per}</span>
-                </div>
-
-                <a
-                  href="#check"
-                  className={`btn w-full px-4 py-[14px] text-[15px] ${hl ? "btn-blue" : "btn-white border border-line"}`}
-                >
-                  {PRICING.planCta(p.name)}
-                </a>
-
-                <ul className="m-0 flex flex-1 list-none flex-col gap-[10px] border-t border-line p-0 pt-[18px] text-[15px]">
-                  {p.checks.map((c) => (
-                    <li key={c} className="flex items-center gap-[10px]">
-                      <Tick size={18} />
-                      {c}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </Reveal>
           );
@@ -99,13 +101,13 @@ export default function Pricing() {
           <div className="max-w-[52ch] text-[16px] text-pretty text-paper/85">{PRICING.expert.body}</div>
         </div>
 
-        <div className="flex flex-col items-stretch gap-[10px] max-md:w-full">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 max-md:w-full">
           {/* TODO: echte link naar de agenda voor een kennismaking */}
-          <a href="#" className="btn btn-lime px-5 py-[13px] text-[15px]">
+          <a href="#" className="btn btn-lime whitespace-nowrap px-5 py-[13px] text-[15px]">
             {PRICING.expert.cta}
           </a>
           {/* TODO: echte link naar de pagina over de expert */}
-          <a href="#" className="text-center text-[14px] text-paper">
+          <a href="#" className="whitespace-nowrap text-[14px] text-paper">
             {PRICING.expert.link}
           </a>
         </div>
