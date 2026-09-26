@@ -86,10 +86,21 @@ De inhoud per abonnement komt van de huidige site, waar de prijzen €29, €99 
 
 ## Wat er op het spel staat
 
-- Klanten in de buurt zoeken precies wat jij doet, en vinden de keten.
-- AI noemt per vraag een handvol bedrijven. Sta je er niet tussen, dan ziet de klant je niet.
-- Advertenties werken alleen zolang je betaalt, en een bureau kost meer dan je marge toelaat.
-- Je site heeft technische fouten die je zelf niet ziet, dus al je moeite telt niet mee.
+Opbouw op de homepage: eerst het externe probleem met de tegenstander, dan het interne gevoel, dan vijf harde verliezen, dan de tijdsdruk en de filosofische zin. Hard, maar eerlijk: geen bangmakerij.
+
+**Kop.** Lokale ondernemers met een goed product sneeuwen online onder bij massa-ketens met eindeloze budgetten.
+
+**Gevoel.** Jij staat elke dag in je zaak en levert beter werk. Toch loopt de klant die jou zocht naar de keten. Dat is frustrerend, en het kost je elke dag omzet.
+
+1. **Je bent onzichtbaar, hoe goed je ook bent.** Klanten zoeken precies wat jij maakt. Bovenaan staan ketens die advertenties kopen. Elke gemiste zoekopdracht is een klant die vandaag bij een ander afrekent.
+2. **AI noemt 3 tot 5 bedrijven. De rest bestaat niet.** Sta je niet in dat antwoord, dan weet de klant niet eens dat je bestaat. [Bron: Uberall 2026, controleren]
+3. **Advertenties zijn gehuurde zichtbaarheid.** Stop je met betalen, dan ben je morgen weer onzichtbaar. De keten betaalt gewoon door.
+4. **Een bureau kost meer dan je hele marge.** Met een lang contract en rapporten die je niet kunt controleren. Je betaalt elke maand, en je weet niet waarvoor.
+5. **Je eigen website werkt tegen je.** Technische fouten die je niet ziet, zorgen dat Google en AI je overslaan. Al je moeite telt niet mee.
+
+**Tijdsdruk.** Elke maand dat je wacht, bouwen zij hun voorsprong verder uit.
+
+**Slotzin.** Dat is niet eerlijk. De beste zaak van de straat hoort gevonden te worden, niet de zaak met het grootste budget.
 
 ## Succes
 
@@ -115,7 +126,7 @@ Wij maken kleine lokale bedrijven vindbaar in Google en AI-antwoorden, vanaf €
 | Label | Betaalbare SEO voor kleine bedrijven |
 | H1 | Vindbaar in Google en AI voor kleine lokale bedrijven. |
 | Onder de H1 | Vanaf €39 per maand. Wij zorgen dat jouw zaak verschijnt als mensen in de buurt zoeken naar wat jij doet, in Google en in AI-assistenten als ChatGPT. Je begint met een gratis check van je website. |
-| Probleem | Kleine bedrijven worden online weggedrukt door ketens met grote budgetten. |
+| Probleem | Lokale ondernemers met een goed product sneeuwen online onder bij massa-ketens met eindeloze budgetten. |
 | Wat je krijgt | Wat je krijgt voor €39 tot €150 per maand. |
 | Wie wij zijn | Een team van ondernemers dat kleine bedrijven vindbaar maakt. |
 | Zo werkt het | In drie stappen vindbaar in Google en AI. |
