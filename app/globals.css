@@ -1,0 +1,659 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — zie README.md van de handoff
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-blue: #1a1aff;
+  --color-ink: #0b0b3b;
+  --color-lime: #c6f24e;
+  --color-signal: #ff4b1f;
+  --color-signal-tint: #fde4dc;
+  --color-lime-tint: #f8fde9;
+  --color-paper: #f4f5f9;
+  --color-beige: #f2f0e9;
+  --color-line: #dcdfe8;
+  --color-muted: #525873;
+
+  --color-bezel: #1a1a1d;
+  --color-bezel-edge: #3a3a3e;
+
+  /* Figtree overal, net als de hero. */
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --shadow-step: 0 20px 60px rgba(11, 11, 59, 0.08);
+
+}
+
+/* ------------------------------------------------------------------ *
+ * Basis
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    /* Wit zoals de hero; de secties eronder hebben hun eigen paper-achtergrond.
+       Zo tonen de afgeronde hoeken van dat vel geen grijze randjes. */
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  a {
+    color: var(--color-blue);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  a:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 3px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Herbruikbare patronen
+ * ------------------------------------------------------------------ */
+@layer components {
+  /* 1200px inhoud plus 24px padding aan weerszijden: zo breed als de
+     designreferentie op 1280px rendert. */
+  .container-page {
+    width: 100%;
+    max-width: 1248px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .section-y {
+    padding-block: clamp(80px, 10vw, 128px);
+  }
+
+  /* Koppen */
+  .h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .lead {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--color-muted);
+    text-wrap: pretty;
+  }
+
+  /* Klein label */
+  .label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  .label-sm {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--color-muted);
+  }
+
+  /* Mono label in kapitalen */
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Cijfers: Figtree met even brede cijfers, zodat getallen rustig uitlijnen */
+  .num {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .ui-font {
+    font-family: var(--font-ui);
+  }
+
+  /* Knoppen */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+  }
+
+  .btn-blue {
+    background: var(--color-blue);
+    color: #fff;
+  }
+
+  .btn-blue:hover {
+    background: var(--color-ink);
+  }
+
+  .btn-lime {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  .btn-lime:hover {
+    background: #bce93f;
+  }
+
+  .btn-white {
+    background: #fff;
+    color: var(--color-ink);
+  }
+
+  .btn-white:hover {
+    background: #f1f1f6;
+  }
+
+  /* Lime vinkje-bolletje */
+  .tick {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    border-radius: 50%;
+    background: var(--color-lime);
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+
+  .pill-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px 14px 6px 8px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-ink);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Beweging
+ *
+ * Bewust rustig gehouden: inhoud komt op met een lichte opacity fade,
+ * zonder verschuiving of schaal. De hero is de uitzondering: die schaalt bij
+ * het wegscrollen naar boven weg. Verder bewegen alleen de details in de hero,
+ * het stippenveld en de slot-CTA, en de FAQ-accordeon.
+ * ------------------------------------------------------------------ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade zodra het element in beeld komt; JavaScript zet `is-in`. */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-in {
+  opacity: 1;
+}
+
+/* Cursor in het chatvenster van de hero */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  margin-left: 2px;
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Stippenveld slotkaart: golf van buiten naar binnen.
+   Rust = de alpha uit het ontwerp, de golf licht kort op. */
+@keyframes pxWave {
+  0%,
+  100% {
+    opacity: var(--px-a);
+  }
+  50% {
+    opacity: var(--px-a-hi);
+  }
+}
+
+.px-wave {
+  animation: pxWave var(--px-dur, 4.6s) ease-in-out infinite;
+  animation-delay: var(--px-delay, 0s);
+}
+
+/* Pijl van stippen in de Google-sectie */
+@keyframes pxArrowFlow {
+  0%,
+  100% {
+    opacity: var(--px-a);
+  }
+  45% {
+    opacity: var(--px-a-hi);
+  }
+}
+
+.px-flow {
+  animation: pxArrowFlow 3.4s ease-in-out infinite;
+  animation-delay: var(--px-delay, 0s);
+}
+
+/* Glans die over de slot-CTA trekt */
+@keyframes sheen {
+  0% {
+    transform: translateX(-160%) skewX(-18deg);
+  }
+  55%,
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+.sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.sheen::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: sheen 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Zachte gloed achter de slot-CTA */
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.glow-pulse {
+  animation: glowPulse 3.8s ease-in-out infinite;
+}
+
+/* FAQ-antwoord */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s ease;
+}
+
+.faq-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.faq-panel > div {
+  overflow: hidden;
+}
+
+.faq-answer {
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.faq-panel[data-open="true"] .faq-answer {
+  opacity: 1;
+  transition-delay: 0.08s;
+}
+
+/* ------------------------------------------------------------------ *
+ * Hero
+ * ------------------------------------------------------------------ */
+
+/* De inhoud schaalt bij het wegscrollen naar boven weg. <HeroScroll> zet
+   --hero-y, --hero-s en --hero-o; zonder JavaScript staat alles gewoon stil. */
+.hero-out {
+  transform: translate3d(0, var(--hero-y, 0px), 0) scale(var(--hero-s, 1));
+  transform-origin: 50% 0;
+  opacity: var(--hero-o, 1);
+  will-change: transform, opacity;
+  /* De transform maakt hier een eigen compositielaag. Zonder eigen witte
+     achtergrond blendt de lichtstreep (.aio-shine, mix-blend-mode: screen) dan
+     tegen transparant en wordt het een blauw blok in plaats van een glans. */
+  background-color: #fff;
+}
+
+.hero-hint {
+  opacity: var(--hero-hint, 1);
+}
+
+/* Proceskaarten: <StackCards> zet --stack-s en --stack-r terwijl de volgende
+   kaart eroverheen schuift. */
+.stack-card {
+  transform: scale(var(--stack-s, 1)) rotate(var(--stack-r, 0deg));
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+
+/* Het sterretje draait binnen en fonkelt daarna elke vier seconden, samen met
+   een halo, een mini-ster en een lichtstreep over "AI Overview". */
+@keyframes aio-intro {
+  from {
+    opacity: 0;
+    transform: rotate(-120deg) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes aio-spark {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  16% {
+    transform: rotate(40deg) scale(0.74);
+  }
+  32% {
+    transform: rotate(90deg) scale(1.12);
+  }
+  42%,
+  100% {
+    transform: rotate(90deg) scale(1);
+  }
+}
+
+@keyframes aio-halo {
+  0%,
+  8% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  28% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes aio-mini {
+  0%,
+  22% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  36% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+  54%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+  }
+}
+
+@keyframes aio-shine {
+  0%,
+  20% {
+    transform: translateX(-110%);
+  }
+  60%,
+  100% {
+    transform: translateX(190%);
+  }
+}
+
+/* Het stippenvinkje in de header: de stippen ploppen van links naar rechts in
+   zodra de header verschijnt. */
+@keyframes pxPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.px-draw circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pxPop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--px-i) * 55ms + 120ms);
+}
+
+.aio-spark {
+  transform-origin: 50% 50%;
+  animation:
+    aio-intro 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    aio-spark 4s cubic-bezier(0.5, 0, 0.2, 1) 1.2s infinite;
+}
+
+.aio-halo {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(88, 137, 245, 0.42), rgba(88, 137, 245, 0));
+  animation: aio-halo 4s ease-out 1.2s infinite;
+}
+
+.aio-mini {
+  opacity: 0;
+  transform: scale(0);
+  animation: aio-mini 4s ease-in-out 1.2s infinite;
+}
+
+.aio-shine {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 60%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(88, 137, 245, 0) 0%,
+    rgba(88, 137, 245, 1) 50%,
+    rgba(88, 137, 245, 0) 100%
+  );
+  mix-blend-mode: screen;
+  transform: translateX(-110%);
+  animation: aio-shine 4s cubic-bezier(0.4, 0, 0.2, 1) 1.2s infinite;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion: alles stil
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+  }
+
+  .hero-out {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .px-wave,
+  .px-flow {
+    opacity: var(--px-a) !important;
+  }
+
+  .sheen::after {
+    display: none;
+  }
+}
+
+
+/* ------------------------------------------------------------------ *
+ * Cijferbalk: 4 kolommen met verticale lijnen, 2×2 onder 1024px,
+ * één kolom met horizontale lijnen onder 768px.
+ * ------------------------------------------------------------------ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.2fr) repeat(3, minmax(0, 1fr));
+}
+
+.stats-grid > * {
+  border-right: 1px solid var(--color-line);
+}
+
+.stats-grid > *:last-child {
+  border-right: 0;
+}
+
+@media (max-width: 1023px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid > *:first-child {
+    grid-column: span 2;
+    border-right: 0;
+  }
+
+  .stats-grid > *:first-child,
+  .stats-grid > *:nth-child(2),
+  .stats-grid > *:nth-child(3) {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .stats-grid > *:nth-child(3) {
+    border-right: 0;
+  }
+
+  /* Cellen die een rij beginnen sluiten aan op de containerrand. */
+  .stats-grid > *:nth-child(2),
+  .stats-grid > *:nth-child(4) {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* De titelcel spant hierboven twee kolommen; dat moet hier weer los. */
+  .stats-grid > *:first-child {
+    grid-column: auto;
+  }
+
+  .stats-grid > * {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .stats-grid > *:last-child {
+    border-bottom: 0;
+  }
+
+  .stats-grid > * {
+    padding-inline: 0;
+  }
+}
