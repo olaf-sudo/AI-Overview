@@ -109,22 +109,29 @@ plaats van `#757775`, omdat die op `#f2f3f4` maar 4,06:1 contrast haalde (minima
 
 ## Versies
 
-De map is een git-repository. `v1` (tag, en de branch `main`) is de laatste versie
-van vóór de Mobbin-ronde; de nieuwe versie staat op de branch `v2`.
+De code staat op GitHub: <https://github.com/olaf-sudo/AI-Overview> (branch `main`).
+Lokaal staat daarnaast de branch `v1`: de versie van vóór de Mobbin-ronde, als
+terugvalpunt. Die staat alleen op deze computer.
 
-Terug naar v1:
+Naar v1 kijken:
+
+```bash
+git switch v1
+```
+
+Terug naar de nieuwste versie:
 
 ```bash
 git switch main
 ```
 
-Weer naar v2:
+Nieuwe wijzigingen naar GitHub:
 
 ```bash
-git switch v2
+git push
 ```
 
-Een draaiende `npm run dev` pikt de wissel vanzelf op.
+Een draaiende `npm run dev` pikt een wissel vanzelf op.
 
 ## Taal
 
