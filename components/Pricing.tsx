@@ -37,7 +37,7 @@ export default function Pricing() {
               >
                 {hl ? (
                   <div className="flex items-center justify-center gap-2 bg-blue py-[9px] text-[13px] font-semibold text-white">
-                    <DotCheck dot={2} gap={0.6} color="#C6F24E" />
+                    <DotCheck dot={2} gap={0.6} color="#C6F24E" loop />
                     {PRICING.badgePopular}
                   </div>
                 ) : null}

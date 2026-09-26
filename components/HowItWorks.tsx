@@ -93,17 +93,17 @@ function IntakeVisual() {
 function PagesVisual() {
   return (
     <div className="ui-font box-content relative h-[240px] overflow-hidden bg-blue p-6 text-[12px]" aria-hidden="true">
-      <div className="absolute left-6 right-20 top-6 rotate-[-3deg] rounded-[12px] bg-white p-[14px] opacity-60">
+      <div className="absolute left-8 right-[72px] top-[67px] rotate-[-3deg] rounded-[12px] bg-white p-[14px] opacity-60">
         <div className="h-2 w-3/5 rounded-[4px] bg-line" />
         <div className="mt-2 h-[6px] w-[90%] rounded-[4px] bg-paper" />
         <div className="mt-[6px] h-[6px] w-4/5 rounded-[4px] bg-paper" />
       </div>
-      <div className="absolute left-11 right-[60px] top-[52px] rotate-[2deg] rounded-[12px] bg-white p-[14px] opacity-85">
+      <div className="absolute left-[52px] right-[52px] top-[95px] rotate-[2deg] rounded-[12px] bg-white p-[14px] opacity-85">
         <div className="h-2 w-[70%] rounded-[4px] bg-line" />
         <div className="mt-2 h-[6px] w-[85%] rounded-[4px] bg-paper" />
         <div className="mt-[6px] h-[6px] w-3/4 rounded-[4px] bg-paper" />
       </div>
-      <div className="absolute left-16 right-10 top-[84px] rounded-[12px] bg-white p-[14px] text-ink">
+      <div className="absolute left-[72px] right-8 top-[127px] rounded-[12px] bg-white p-[14px] text-ink">
         <div className="mono-label text-[10px] text-muted">{HOW.pages.url}</div>
         <div className="mt-[6px] text-[14px] font-semibold leading-[1.3]">{HOW.pages.title}</div>
         <div className="mt-3 flex items-center justify-between">

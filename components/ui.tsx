@@ -114,11 +114,14 @@ export function DotCheck({
   gap = 1,
   color = "#1A1AFF",
   draw = false,
+  loop = false,
 }: {
   dot?: number;
   gap?: number;
   color?: string;
   draw?: boolean;
+  /** Blijft het intekenen herhalen, zoals in het "Most chosen"-balkje. */
+  loop?: boolean;
 }) {
   const size = CHECK.length * (dot + gap) - gap;
   return (
@@ -127,7 +130,7 @@ export function DotCheck({
       height={size}
       viewBox={`0 0 ${size} ${size}`}
       aria-hidden="true"
-      className={`block flex-none ${draw ? "px-draw" : ""}`}
+      className={`block flex-none ${loop ? "px-draw-loop" : draw ? "px-draw" : ""}`}
     >
       {CHECK.flatMap((row, r) =>
         row.split("").map((bit, c) =>

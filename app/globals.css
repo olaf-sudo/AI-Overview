@@ -316,6 +316,34 @@
   animation-delay: var(--px-delay, 0s);
 }
 
+/* Pijl achter de telefoon: de lime stippen pulseren na elkaar omlaag, het
+   grijze raster krijgt een zachte golf. Buiten beeld pauzeert .cv-auto dit. */
+@keyframes pxArrowPulse {
+  0%,
+  100% {
+    opacity: var(--px-a);
+    transform: scale(0.82);
+  }
+  18% {
+    opacity: var(--px-a-hi);
+    transform: scale(1.08);
+  }
+  40% {
+    opacity: var(--px-a);
+    transform: scale(0.82);
+  }
+}
+
+.px-arrow {
+  animation: pxArrowPulse 2.4s ease-in-out infinite;
+  animation-delay: var(--px-delay, 0s);
+}
+
+.px-ripple {
+  animation: pxWave 3.6s ease-in-out infinite;
+  animation-delay: var(--px-delay, 0s);
+}
+
 /* Glans die over de slot-CTA trekt */
 @keyframes sheen {
   0% {
@@ -517,6 +545,35 @@
   }
 }
 
+/* Zelfde intekenen, maar steeds opnieuw: inploppen, even staan, vervagen. */
+@keyframes pxPopLoop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  15%,
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.px-draw-loop circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pxPopLoop 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite both;
+  animation-delay: calc(var(--px-i) * 55ms);
+}
+
 .px-draw circle {
   transform-box: fill-box;
   transform-origin: center;
@@ -592,9 +649,17 @@
     opacity: 1 !important;
   }
 
+  .px-draw-loop circle {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
   .px-wave,
-  .px-flow {
+  .px-flow,
+  .px-ripple,
+  .px-arrow {
     opacity: var(--px-a) !important;
+    transform: none !important;
   }
 
   .sheen::after {

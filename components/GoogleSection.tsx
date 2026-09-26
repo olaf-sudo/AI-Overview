@@ -1,4 +1,5 @@
 import { GOOGLE } from "@/lib/content";
+import CountUp from "./CountUp";
 import PhoneFrame from "./PhoneFrame";
 import PixelArrow from "./PixelArrow";
 import Reveal from "./Reveal";
@@ -34,7 +35,7 @@ export default function GoogleSection() {
           <div className="grid w-full max-w-[480px] grid-cols-2 gap-6 border-t border-line pt-6 max-[420px]:grid-cols-1">
             {GOOGLE.stats.map((s) => (
               <Reveal key={s.n} className="flex flex-col gap-1">
-                <div className="num text-[52px] leading-none text-blue">{s.n}</div>
+                <CountUp value={s.n} className="num block text-[52px] leading-none text-blue" />
                 <div className="text-[14px] font-medium">{s.label}</div>
                 <div className="label-sm">{s.src}</div>
               </Reveal>
