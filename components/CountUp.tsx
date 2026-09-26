@@ -8,9 +8,10 @@ const DURATION = 1400;
 const NUMBER = /\d+(?:\.\d+)?/g;
 
 /**
- * Laat de getallen in een label oplopen zodra het in beeld komt. De server
- * rendert het eindgetal, dus zonder JavaScript of bij reduced motion staat het
- * er gewoon. De tekst wordt direct via de ref bijgewerkt, zonder re-renders.
+ * Laat de getallen in een label oplopen, elke keer dat het in beeld komt: gaat
+ * het uit beeld, dan springt het terug naar 0 en telt het de volgende keer weer
+ * op. De server rendert het eindgetal, dus zonder JavaScript of bij reduced
+ * motion staat het er gewoon. De tekst gaat direct via de ref, zonder re-renders.
  */
 export default function CountUp({ value, className }: { value: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -34,6 +35,7 @@ export default function CountUp({ value, className }: { value: string; className
 
     let frame = 0;
     const run = () => {
+      cancelAnimationFrame(frame);
       const start = performance.now();
       const step = (now: number) => {
         const p = Math.min(1, (now - start) / DURATION);
@@ -45,10 +47,13 @@ export default function CountUp({ value, className }: { value: string; className
 
     render(0);
     const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          io.disconnect();
+      ([entry]) => {
+        if (entry.isIntersecting) {
           run();
+        } else {
+          // Uit beeld: klaarzetten voor de volgende keer.
+          cancelAnimationFrame(frame);
+          render(0);
         }
       },
       { threshold: 0.6 },
