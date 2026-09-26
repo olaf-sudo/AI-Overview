@@ -1,4 +1,5 @@
 import { STATS } from "@/lib/content";
+import CountUp from "./CountUp";
 import Reveal from "./Reveal";
 
 export default function StatsRow() {
@@ -20,9 +21,7 @@ export default function StatsRow() {
             delay={160 + i * 110}
             className="flex flex-col justify-center gap-[6px] px-7 py-11"
           >
-            <div className="num text-[clamp(36px,3.6vw,52px)] leading-none text-blue">
-              {s.n}
-            </div>
+            <CountUp value={s.n} className="num block text-[clamp(36px,3.6vw,52px)] leading-none text-blue" />
             <div className="text-[14px] font-medium text-pretty">{s.label}</div>
             <div className="label-sm">{s.src}</div>
           </Reveal>
